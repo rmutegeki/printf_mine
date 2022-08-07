@@ -25,41 +25,25 @@ int _printf(const char *format, ...)
 	while (format[i])
 
 	{
-
 		no_conversion = 1;
 
 		if (format[i] == '%')
-
-		{
-
+		{	
 			temp_func = match_specifier(format[++i]);
-
 			if (temp_func)
-
 			{
-
 				chars_written += temp_func(arg_list);
-
-				i++, no_conversion = 0;
-
+				i++;
+				no_conversion = 0;
 			}
-
 		}
-
 		if (no_conversion)
-
 		{
-
 			_putchar(format[i++]);
-
 			chars_written++;
-
 		}
-
 	}
-
 	va_end(arg_list);
 
 	return (chars_written);
-
 }
